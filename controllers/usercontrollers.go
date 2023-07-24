@@ -79,13 +79,13 @@ func Login(c *gin.Context) {
 		return 
 	}
 	c.SetSameSite(http.SameSiteLaxMode)
-	c.SetCookie("Autharizatiion",tokenString,3600*24*30,"","",true,true)
+	c.SetCookie("Authorization",tokenString,3600*24*30,"","",false,true)
 	c.JSON(http.StatusOK,gin.H{})
 
 }
 
 func Validate(c *gin.Context){
-	user,_:=c.Get("user")
+	 user,_:=c.Get("user")
 	c.JSON(http.StatusOK,gin.H{
 		"message":user,
 	})
